@@ -61,8 +61,15 @@ const static char http_e[] = "</ul><a href=\"P\">prev</a>&nbsp;<a href=\"N\">nex
 #define MAXURLLEN 128
 #define MAXSTATION 10
 
-static const char *preset_url = "http://wbgo.streamguys.net/wbgo96"; // preset station URL
+static const char *preset_url = "http://158.69.227.214:8113/stream"; // preset station URL
 /*
+  "http://188.40.32.140:8061/stream",
+  "http://192.99.62.212:9854/stream", --
+  "http://158.69.227.214:8113/stream", --
+  "http://198.58.106.133:8533/stream", -
+  "http://uk1.internet-radio.com:8294/live", +
+  "http://us2.internet-radio.com:8046/",
+
   "http://wbgo.streamguys.net/wbgo96",
   "http://wbgo.streamguys.net/thejazzstream",
   "http://stream.srg-ssr.ch/m/rsj/mp3_128",
@@ -87,13 +94,13 @@ char *init_url(int d) {
 
   nvs_open(NVSNAME, NVS_READWRITE, &h);
 
-  if (nvs_get_u8(h, key_n, &stno_max) != ESP_OK) {
+//  if (nvs_get_u8(h, key_n, &stno_max) != ESP_OK) {
     stno = 0;
     stno_max = 1;
     nvs_set_u8(h, key_i, stno);
     nvs_set_u8(h, key_n, stno_max); 
     nvs_set_str(h, index, preset_url);
-  }
+//  }
 
   nvs_get_u8(h, key_i, &stno);
 
